@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_x/view/pageone.dart';
-import 'package:get_x/view/pagethree.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get_x/controller/countController.dart';
+import 'package:get_x/view/pagefive.dart';
 import 'package:get_x/view/pagetow.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
+class Home extends StatelessWidget {
+  Home({super.key});
+  final controller = Get.lazyPut(() => Countcontroller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +36,7 @@ class _HomeState extends State<Home> {
                 color: Colors.blue,
                 textColor: Colors.white,
                 onPressed: () {
-                  Get.toNamed("/pagetow"); // بستخدام الروت الي فصفحة المين
+                  Get.to(() => PageTow()); // بستخدام الروت الي فصفحة المين
                 },
                 child: Text("Page Tow"),
               ),
@@ -53,6 +49,26 @@ class _HomeState extends State<Home> {
                   Get.offNamed("/pagethree");
                 },
                 child: Text("Page Three"),
+              ),
+            ),
+            Center(
+              child: MaterialButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                onPressed: () {
+                  Get.offNamed("/pagefour");
+                },
+                child: Text("Page Four"),
+              ),
+            ),
+            Center(
+              child: MaterialButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                onPressed: () {
+                  Get.to(() => Pagefive());
+                },
+                child: Text("Page Five"),
               ),
             ),
           ],
