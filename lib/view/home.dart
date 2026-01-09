@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_x/controller/bindings.dart';
 import 'package:get_x/controller/countController.dart';
 import 'package:get_x/view/pagefive.dart';
 import 'package:get_x/view/pagetow.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
-  final controller = Get.lazyPut(() => Countcontroller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,10 @@ class Home extends StatelessWidget {
                 color: Colors.blue,
                 textColor: Colors.white,
                 onPressed: () {
-                  Get.to(() => PageTow()); // بستخدام الروت الي فصفحة المين
+                  Get.to(
+                    () => PageTow(),
+                    // binding: MyBindings(),
+                  ); // بستخدام الروت الي فصفحة المين
                 },
                 child: Text("Page Tow"),
               ),

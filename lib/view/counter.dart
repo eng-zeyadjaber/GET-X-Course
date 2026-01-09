@@ -21,27 +21,27 @@ class _CounterState extends State<Counter> {
           children: [
             GetBuilder<Countcontroller>(
               init: Countcontroller(),
-              builder: (contrller) => Row(
+              builder: (controller) => Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     child: IconButton(
                       onPressed: () {
-                        contrller.increment();
+                        controller.increment();
                       },
                       icon: Icon(Icons.add, size: 40),
                     ),
                   ),
                   Center(
                     child: Text(
-                      "${contrller.counter}",
+                      "${controller.counter}",
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
                   Container(
                     child: IconButton(
                       onPressed: () {
-                        contrller.decrement();
+                        controller.decrement();
                       },
                       icon: Icon(Icons.remove, size: 40),
                     ),

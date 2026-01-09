@@ -6,7 +6,8 @@ import 'package:get_x/controller/countController.dart';
 
 class PageTow extends StatelessWidget {
   PageTow({super.key});
-  Countcontroller controller = Get.find();
+  // final c = Get.lazyPut(() => Countcontroller(), fenix: true ); // fenix use for not delete page in memory
+  final Countcontroller controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
