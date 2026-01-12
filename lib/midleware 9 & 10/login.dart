@@ -21,10 +21,24 @@ class Login extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 child: InkWell(
                   onTap: () {
-                    sharepref!.setString("id", "1");
+                    sharepref!.setString("rule", "user");
                     Get.offNamed("/home");
                   },
                   child: Text("Login"),
+                ),
+              ),
+            ),
+            Container(height: 20),
+            Center(
+              child: Container(
+                color: Colors.blue,
+                padding: EdgeInsets.all(10),
+                child: InkWell(
+                  onTap: () {
+                    sharepref!.setString("rule", "admin");
+                    Get.offNamed("/admin");
+                  },
+                  child: Text("Login Admin"),
                 ),
               ),
             ),
