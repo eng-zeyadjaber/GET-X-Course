@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_x/controller/bindings.dart';
+import 'package:get_x/locale/homeLocal.dart';
+import 'package:get_x/locale/local.dart';
 import 'package:get_x/midleware%209%20&%2010/admin.dart';
 import 'package:get_x/midleware%209%20&%2010/auth_midleware.dart';
 import 'package:get_x/midleware%209%20&%2010/home9&10.dart';
 import 'package:get_x/midleware%209%20&%2010/login.dart';
 import 'package:get_x/midleware%209%20&%2010/super.dart';
 import 'package:get_x/midleware%209%20&%2010/super_midleware.dart';
+import 'package:get_x/services/homeServices.dart';
+import 'package:get_x/services/settingservices.dart';
 import 'package:get_x/view/counter.dart';
 import 'package:get_x/view/home.dart';
 import 'package:get_x/view/pagefive.dart';
@@ -20,8 +24,13 @@ SharedPreferences? sharepref;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initalServices();
   sharepref = await SharedPreferences.getInstance();
   runApp(MyApp());
+}
+
+Future initalServices() async {
+  await Get.putAsync(() => SettingServices().init());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,20 +39,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'GetX Course',
       theme: ThemeData(primarySwatch: Colors.blue),
+      locale: Get.deviceLocale,
+      translations: MyLocal(),
       initialRoute: "/",
       // initialBinding:
       //     MyBindings(), // in all app use that for save input in memory
       getPages: [
-        GetPage(
-          name: "/",
-          page: () => Login(),
-          middlewares: [AuthMidleware(), SuperMidleware()],
-        ),
-        GetPage(name: "/home", page: () => Home9()),
-        GetPage(name: "/admin", page: () => Admin()),
-        GetPage(name: "/super", page: () => Super()),
+        GetPage(name: "/", page: () => Homelocal()),
+        // GetPage(name: "/homeServices", page: () => Homeservices()),
+        //   GetPage(
+        //     name: "/",
+        //     page: () => Homeservices(),
+        // middlewares: [AuthMidleware(), SuperMidleware()],
+        // ),
+        // GetPage(name: "/home", page: () => Home9()),
+        // GetPage(name: "/admin", page: () => Admin()),
+        // GetPage(name: "/super", page: () => Super()),
         // GetPage(name: '/', page: () => Home(), binding: MyBindings()),
         // GetPage(name: "/pageone", page: () => PageOne()),
         // GetPage(name: "/pagetow", page: () => PageTow()),
