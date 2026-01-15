@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_x/Dialog/Dialog.dart';
 import 'package:get_x/controller/bindings.dart';
 import 'package:get_x/locale/homeLocal.dart';
 import 'package:get_x/locale/local.dart';
+import 'package:get_x/locale/local_controller.dart';
 import 'package:get_x/midleware%209%20&%2010/admin.dart';
 import 'package:get_x/midleware%209%20&%2010/auth_midleware.dart';
 import 'package:get_x/midleware%209%20&%2010/home9&10.dart';
@@ -38,16 +40,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyLocaleController controller = Get.put(MyLocaleController());
     return GetMaterialApp(
       title: 'GetX Course',
       theme: ThemeData(primarySwatch: Colors.blue),
-      locale: Get.deviceLocale,
+      locale: controller.intialLang,
       translations: MyLocal(),
       initialRoute: "/",
       // initialBinding:
       //     MyBindings(), // in all app use that for save input in memory
       getPages: [
-        GetPage(name: "/", page: () => Homelocal()),
+        GetPage(name: "/", page: () => DialogGetX()),
+        // GetPage(name: "/", page: () => Homelocal()),
         // GetPage(name: "/homeServices", page: () => Homeservices()),
         //   GetPage(
         //     name: "/",
