@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_x/BottomSheet/bottomSheet.dart';
 import 'package:get_x/Dialog/Dialog.dart';
+import 'package:get_x/Getx%20Features/Features.dart';
+import 'package:get_x/Getx%20Features/features2.dart';
+import 'package:get_x/Snackbar/snackbar.dart';
 import 'package:get_x/controller/bindings.dart';
 import 'package:get_x/locale/homeLocal.dart';
 import 'package:get_x/locale/local.dart';
@@ -45,12 +49,15 @@ class MyApp extends StatelessWidget {
       title: 'GetX Course',
       theme: ThemeData(primarySwatch: Colors.blue),
       locale: controller.intialLang,
-      translations: MyLocal(),
+      // translations: MyLocal(),
       initialRoute: "/",
       // initialBinding:
       //     MyBindings(), // in all app use that for save input in memory
       getPages: [
-        GetPage(name: "/", page: () => DialogGetX()),
+        GetPage(name: "/", page: () => Features()),
+        GetPage(name: "/pagetow", page: () => Features2()),
+        // GetPage(name: "/", page: () => Bottomsheet()),
+        // GetPage(name: "/", page: () => DialogGetX()),
         // GetPage(name: "/", page: () => Homelocal()),
         // GetPage(name: "/homeServices", page: () => Homeservices()),
         //   GetPage(
