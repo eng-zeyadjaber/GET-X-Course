@@ -9,7 +9,7 @@ class Features2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Featurecontroller controller = Get.put(Featurecontroller());
+    final controller = Get.find<Featurecontroller>();
     return Scaffold(
       appBar: AppBar(title: Text("Getx Features")),
       body: Container(
@@ -18,7 +18,6 @@ class Features2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("${controller.preRoute}"),
-            Text("${controller.routeCurrent}"),
             Text("${controller.name}"),
             Text("${controller.age}"),
             Center(

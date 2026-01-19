@@ -8,7 +8,7 @@ class Features extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Featurecontroller controller = Get.put(Featurecontroller());
+    final controller = Get.find<Featurecontroller>();
     return Scaffold(
       appBar: AppBar(title: Text("Getx Features")),
       body: Container(
@@ -23,7 +23,7 @@ class Features extends StatelessWidget {
                 textColor: Colors.white,
                 onPressed: () {
                   Get.toNamed(
-                    "pagetow",
+                    "/pagetow",
                     arguments: {"name": "Abo Alzeed", "age": "24"},
                   );
                 },
@@ -53,6 +53,24 @@ class Features extends StatelessWidget {
                   print(Get.isSnackbarOpen);
                 },
                 child: Text("Check"),
+              ),
+            ),
+            Container(height: 5),
+            Center(
+              child: MaterialButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                onPressed: () {
+                  // print(GetPlatform.isAndroid);
+                  // print(GetPlatform.isMobile);
+                  // print(GetPlatform.isIOS);
+                  // print(GetPlatform.isMacOS);
+                  // print(Get.width);
+                  // print(Get.height);
+                  // print(context.isLandscape);
+                  // print(context.isPortrait);
+                },
+                child: Text("TEST"),
               ),
             ),
           ],

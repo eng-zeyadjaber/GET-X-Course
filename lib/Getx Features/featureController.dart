@@ -7,10 +7,17 @@ class Featurecontroller extends GetxController {
   String? age;
   @override
   void onInit() {
-    preRoute = Get.previousRoute;
+    super.onInit();
+    preRoute = Get.routing.previous;
     routeCurrent = Get.routing.current;
-    name = Get.arguments['name'];
-    age = Get.arguments['age'];
+  }
+
+  @override
+  void onReady() {
+    if (Get.arguments != null) {
+      name = Get.arguments['name'];
+      age = Get.arguments['age'];
+    }
     super.onInit();
   }
 }

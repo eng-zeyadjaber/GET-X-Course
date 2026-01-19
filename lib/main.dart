@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_x/BottomSheet/bottomSheet.dart';
 import 'package:get_x/Dialog/Dialog.dart';
 import 'package:get_x/Getx%20Features/Features.dart';
+import 'package:get_x/Getx%20Features/featureController.dart';
 import 'package:get_x/Getx%20Features/features2.dart';
 import 'package:get_x/Snackbar/snackbar.dart';
 import 'package:get_x/controller/bindings.dart';
@@ -17,6 +18,7 @@ import 'package:get_x/midleware%209%20&%2010/super.dart';
 import 'package:get_x/midleware%209%20&%2010/super_midleware.dart';
 import 'package:get_x/services/homeServices.dart';
 import 'package:get_x/services/settingservices.dart';
+import 'package:get_x/theme/theme.dart';
 import 'package:get_x/view/counter.dart';
 import 'package:get_x/view/home.dart';
 import 'package:get_x/view/pagefive.dart';
@@ -47,15 +49,30 @@ class MyApp extends StatelessWidget {
     MyLocaleController controller = Get.put(MyLocaleController());
     return GetMaterialApp(
       title: 'GetX Course',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: Themes.customLightThem,
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.light,
       locale: controller.intialLang,
       // translations: MyLocal(),
       initialRoute: "/",
       // initialBinding:
       //     MyBindings(), // in all app use that for save input in memory
       getPages: [
-        GetPage(name: "/", page: () => Features()),
-        GetPage(name: "/pagetow", page: () => Features2()),
+        GetPage(name: "/", page: () => ThemeGetX()),
+        // GetPage(
+        //   name: "/Features",
+        //   page: () => Features(),
+        //   binding: BindingsBuilder(() {
+        //     Get.put(Featurecontroller());
+        //   }),
+        // ),
+        // GetPage(
+        //   name: "/pagetow",
+        //   page: () => Features2(),
+        //   binding: BindingsBuilder(() {
+        //     Get.put(Featurecontroller());
+        //   }),
+        // ),
         // GetPage(name: "/", page: () => Bottomsheet()),
         // GetPage(name: "/", page: () => DialogGetX()),
         // GetPage(name: "/", page: () => Homelocal()),
@@ -77,4 +94,19 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
+}
+
+class Themes {
+  static ThemeData customDarkThem = ThemeData.dark().copyWith(
+    appBarTheme: AppBarTheme(
+      color: Colors.white,
+      titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+    ),
+  );
+  static ThemeData customLightThem = ThemeData.light().copyWith(
+    appBarTheme: AppBarTheme(
+      color: Colors.blue,
+      titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+    ),
+  );
 }
